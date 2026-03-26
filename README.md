@@ -51,15 +51,15 @@ The following models were used to generate the benchmark:
 - Claude Haiku 4.5
 - Claude Sonnet 4.6
 - DeepSeek V3.2
-- GPT-5.3
 - Gemini 3 Flash
 - Gemini 3.1 Pro
-- Grok 4.20
-- Qwen3.5-Plus
-- Qwen3.5-Flash
-- Mistral Large 2.1
 - GLM-5
+- GPT-5.3
+- Grok 4.20
 - Llama 4 Scout
+- Mistral Large 2.1
+- Qwen3.5-Flash
+- Qwen3.5-Plus
 
 ## Validation
 

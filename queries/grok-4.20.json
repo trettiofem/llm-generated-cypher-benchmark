@@ -20,7 +20,7 @@
   "MATCH (t:Train)<-[:LOGGED_FOR]-(ml:MaintenanceLog) WHERE ml.status = 'pending' WITH t, COUNT(ml) AS pendingLogs WHERE pendingLogs > 2 MATCH (t)-[:STOPS_AT]->(s:Station) RETURN t.id, pendingLogs, COLLECT(s.name) AS stations",
   "MATCH (start:Station {name: 'London'})-[*2..5]-(end:Station {name: 'Birmingham'}) WITH DISTINCT end AS station MATCH (station)<-[:RECORDED_AT]-(log:DailyPassengerLog) MATCH (pass:Passenger)-[:PURCHASED]->(ticket:Ticket)-[:BOOKED_FOR]->(journey:Journey)-[:FOLLOWS]->(route:Route)-[:SERVES]->(station) WHERE journey.departureDate > date() WITH station.name AS stationName, SUM(log.passengerCount) AS totalLogs, COUNT(DISTINCT pass) AS uniquePassengers RETURN stationName, totalLogs, uniquePassengers ORDER BY totalLogs DESC LIMIT 10",
   "MATCH (s:Station) RETURN s.name AS name, s.code AS code ORDER BY name LIMIT 20",
-  "MATCH (p:Platform)<-[:HAS_PLATFORM]-(s:Station {name: 'King\\'s Cross'}) RETURN p.number AS platformNumber",
+  "MATCH (p:Platform)<-[:HAS_PLATFORM]-(s:Station {name: 'Marylebone'}) RETURN p.number AS platformNumber",
   "MATCH (t:Train)-[:STOPS_AT]->(s:Station {code: 'MAN'}) RETURN t.id AS trainId, t.arrivalTime",
   "MATCH (pass:Passenger {id: 1001})-[:PURCHASED]->(tk:Ticket) RETURN tk.id AS ticketId, tk.price",
   "MATCH (r:Route {name: 'West Coast Main Line'}) RETURN r.distanceKm AS distance",

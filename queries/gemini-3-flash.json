@@ -8,7 +8,7 @@
   "MATCH (i:Incident)-[:AFFECTED]->(r:Route) WHERE i.severity = 'High' AND i.timestamp > '2024-01-01' RETURN i.description, r.name",
   "MATCH (p:Passenger)-[:HAS_CARD]->(c:TravelCard) WHERE c.expiryDate < '2024-06-01' RETURN p.name, c.id",
   "MATCH (j:Journey)<-[:FOR_JOURNEY]-(t:Ticket) WHERE j.date = '2024-03-24' RETURN count(t) AS totalTickets",
-  "MATCH (s:Station {name: 'King\\'s Cross'})<-[:STOPS_AT]-(t:Train) MATCH (t)-[:HAS_MAINTENANCE]->(m:MaintenanceLog) RETURN t.id, m.details, m.date ORDER BY m.date DESC",
+  "MATCH (s:Station {name: 'Marylebone'})<-[:STOPS_AT]-(t:Train) MATCH (t)-[:HAS_MAINTENANCE]->(m:MaintenanceLog) RETURN t.id, m.details, m.date ORDER BY m.date DESC",
   "MATCH (r:Route)<-[:FOLLOWS]-(t:Train)-[:STOPS_AT]->(s:Station) WITH r, count(DISTINCT s) AS stopCount WHERE stopCount > 10 RETURN r.name, stopCount",
   "MATCH (p:Passenger)-[:PURCHASED]->(t:Ticket)-[:FOR_JOURNEY]->(j:Journey)-[:ON_ROUTE]->(r:Route) WHERE r.name = 'Coastal Way' RETURN DISTINCT p.name",
   "MATCH (s:Station) OPTIONAL MATCH (s)-[:HAS_INCIDENT]-(i:Incident) RETURN s.name, count(i) AS incidentCount ORDER BY incidentCount DESC",

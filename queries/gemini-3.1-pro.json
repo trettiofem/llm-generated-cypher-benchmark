@@ -9,7 +9,7 @@
   "MATCH (r:Route {id: 'RT-05'})-[:STOPS_AT]->(s:Station) RETURN s.name ORDER BY s.stopOrder;",
   "MATCH (i:Incident {status: 'ACTIVE'})-[:AFFECTED]->(r:Route) WHERE i.timestamp >= datetime.truncate('day', datetime()) RETURN i.description, r.name;",
   "MATCH (p:Passenger)-[:PURCHASED]->(t:Ticket) RETURN p.id AS passengerId, count(t) AS ticketCount ORDER BY ticketCount DESC LIMIT 10;",
-  "MATCH path = shortestPath((s1:Station {name: 'Kings Cross'})-[:CONNECTED_TO*..15]-(s2:Station {name: 'Paddington'})) RETURN path;",
+  "MATCH path = shortestPath((s1:Station {name: 'Marylebone'})-[:CONNECTED_TO*..15]-(s2:Station {name: 'Paddington'})) RETURN path;",
   "MATCH (p:Passenger)-[:PURCHASED]->(t:Ticket {isValid: false}), (p)-[:OWNS]->(tc:TravelCard) SET tc.status = 'SUSPENDED' RETURN count(tc) AS suspendedCards;",
   "MATCH (j:Journey)<-[:FOR_JOURNEY]-(t:Ticket) WHERE j.date < date() - duration({years: 1}) AND NOT (j)<-[:LOGGED_FOR]-(:DailyPassengerLog) DETACH DELETE j, t;",
   "MATCH (s:Station)<-[:LOGGED_AT]-(d:DailyPassengerLog) WHERE d.date >= date() - duration({months: 1}) RETURN s.name AS stationName, avg(d.passengerCount) AS avgDailyPassengers ORDER BY avgDailyPassengers DESC;",

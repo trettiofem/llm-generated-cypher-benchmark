@@ -1,7 +1,7 @@
 [
   "MATCH (s:Station) RETURN s.name, s.id LIMIT 100",
   "MATCH (s:Station) WHERE s.city = 'London' RETURN s.name, s.platform_count",
-  "MATCH (t:Train)-[:STOPS_AT]->(s:Station) WHERE s.name = 'King\\'s Cross' RETURN t.train_number, t.status",
+  "MATCH (t:Train)-[:STOPS_AT]->(s:Station) WHERE s.name = 'Marylebone' RETURN t.train_number, t.status",
   "MATCH (p:Passenger)-[:PURCHASED]->(t:Ticket) RETURN p.passenger_id, t.ticket_id, t.price",
   "MATCH (t:Train) WHERE t.train_id = 'TR001' SET t.status = 'Delayed'",
   "MATCH (i:Incident) WHERE i.incident_id = 'INC2026001' DELETE i",
